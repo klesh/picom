@@ -456,7 +456,7 @@ void win_process_image_flags(session_t *ps, struct managed_win *w) {
 	while (win_check_flags_any(w, WIN_FLAGS_IMAGES_STALE) &&
 	       !win_check_flags_all(w, WIN_FLAGS_IMAGE_ERROR)) {
 		// Image needs to be updated, update it.
-		if (!ps->backend_data) {
+		if (!ps->backend_data || ! w->state) {
 			// We are using legacy backend, nothing to do here.
 			break;
 		}
